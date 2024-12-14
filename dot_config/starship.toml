@@ -1,0 +1,38 @@
+format = '''
+$time $username $directory $git_branch$git_status $cmd_duration
+$character
+'''
+
+add_newline = true
+
+[time]
+disabled = false
+format = '[$time]($style)'
+style = 'cyan'
+
+[username]
+show_always = true
+format = '[$user]($style)'
+style_user = 'bright-yellow'
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+format = '[{](white bold)[$path]($style)[}](white bold)'
+style = 'bold yellow'
+
+[git_branch]
+format = '[\($branch(:$remote_branch)]($style)'
+style = 'cyan'
+
+[git_status]
+format = '$ahead_behind[\)](cyan)[\[$all_status\]]($style)'
+modified = '[${count}](red)'
+staged = '[${count}](green)'
+untracked = '[${count}](bold white)'
+ahead = '[⇡${count}](bold white)'
+diverged = '[⇡${ahead_count}⇣${behind_count}](bold white)'
+behind = '[⇣${count}](bold white)'
+
+stashed = ''
+style = 'cyan'
