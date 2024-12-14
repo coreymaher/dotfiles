@@ -2,6 +2,7 @@ return {
   'nvim-telescope/telescope.nvim',
   dependencies = {
     'nvim-telescope/telescope-ui-select.nvim',
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
     require('telescope').setup({})
@@ -31,6 +32,7 @@ return {
     vim.keymap.set('n', '<leader>F', builtin.live_grep, { desc = 'Telescope live grep' })
     vim.keymap.set('v', '<leader>F', live_grep_selection, { desc = 'Telescope live grep' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope find buffers' })
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope find help' })
 
     require("telescope").load_extension("ui-select")
   end
