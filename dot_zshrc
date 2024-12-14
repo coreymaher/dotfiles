@@ -1,0 +1,12 @@
+# starship
+autoload -Uz add-zsh-hook vcs_info
+eval "$(starship init zsh)"
+
+# paths
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.local/bin"
+
+# computer-specific zshrc
+if [ -f "$HOME/.local.zshrc" ]; then
+  source "$HOME/.local.zshrc"
+fi

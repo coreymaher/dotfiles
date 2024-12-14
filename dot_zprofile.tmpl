@@ -1,0 +1,10 @@
+# git aliases
+alias gl="git log -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative"
+alias gco="git checkout"
+alias gba="git branch -a"
+alias gb="git branch"
+
+{{ if eq .chezmoi.os "darwin" }}
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ end }}
