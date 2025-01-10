@@ -7,3 +7,5 @@ font-feature = -calt
 shell-integration-features = "no-cursor"
 
 theme = "iTerm2 Dark Background"
+
+window-inherit-working-directory = false
