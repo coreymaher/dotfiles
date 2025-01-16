@@ -5,7 +5,13 @@ return {
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   config = function()
-    require('telescope').setup({})
+    require('telescope').setup({
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
+    })
 
     local builtin = require('telescope.builtin')
 
