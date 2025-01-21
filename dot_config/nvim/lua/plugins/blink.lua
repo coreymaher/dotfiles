@@ -25,7 +25,7 @@ return {
 
       sources = {
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' },
-        default = { 'lsp', 'path', 'buffer', 'codeium' },
+        default = { 'lsp', 'path', 'buffer', 'dadbod', 'codeium' },
 
         providers = {
           codeium = {
@@ -37,6 +37,10 @@ return {
                 return [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]]
               end
             },
+          },
+          dadbod = {
+            name = "Dadbod",
+            module = "vim_dadbod_completion.blink",
           },
         },
       },

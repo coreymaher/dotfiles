@@ -19,3 +19,6 @@ vim.opt.listchars = { tab = '» ', trail = '-', extends = '>', precedes = '<', e
 
 -- prevent markdown from changing my tab configs
 vim.g.markdown_recommended_style = 0
+
+-- auto session options
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
