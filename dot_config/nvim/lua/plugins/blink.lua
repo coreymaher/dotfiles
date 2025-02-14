@@ -25,7 +25,7 @@ return {
 
       sources = {
         -- default = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' },
-        default = { 'lsp', 'path', 'buffer', 'dadbod', 'codeium' },
+        default = { 'lazydev', 'lsp', 'path', 'buffer', 'dadbod', 'codeium' },
 
         providers = {
           codeium = {
@@ -42,6 +42,11 @@ return {
             name = "Dadbod",
             module = "vim_dadbod_completion.blink",
           },
+          lazydev = {
+            name = "LazyDev",
+            module = "lazydev.integrations.blink",
+            score_offset = 100,
+          },
         },
       },
 
@@ -54,10 +59,7 @@ return {
         },
         documentation = { window = { border = 'single' } },
       },
-      signature = { window = { border = 'single' } },
-
-      -- experimental signature help support
-      signature = { enabled = true }
+      signature = { enabled = true, window = { border = 'single' } },
     },
     opts_extend = { "sources.default" }
   }

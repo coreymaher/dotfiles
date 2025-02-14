@@ -9,6 +9,9 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+          file_ignore_patterns = {
+            "node_modules", ".git",
+          },
         },
         grep_string = {
           additional_args = {"--hidden"}
@@ -45,6 +48,8 @@ return {
     vim.keymap.set('v', '<leader>F', live_grep_selection, { desc = 'Telescope live grep' })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope find buffers' })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope find help' })
+    vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = 'Telescope resume' })
+    vim.keymap.set('n', '<leader>f.', builtin.oldfiles, { desc = 'Telescope find recent files' })
 
     require("telescope").load_extension("ui-select")
   end
