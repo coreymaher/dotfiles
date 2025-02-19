@@ -9,7 +9,7 @@ local function setup_node(suggested_version)
   local version = ""
 
   -- Read the content of the alias file if it exists and is opened successfully
-  local handle = io.popen("source " .. nvm_dir .. "/nvm.sh && nvm version neovim")
+  local handle = io.popen("source " .. nvm_dir .. "/nvm.sh || nvm version neovim")
   if handle then
     version = handle:read("*a"):gsub("%s+", "")
     handle:close()

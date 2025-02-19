@@ -10,14 +10,16 @@ return {
     },
   },
   {
+    'williamboman/mason.nvim',
+    version = "*",
+  },
+  {
+    'williamboman/mason-lspconfig.nvim',
+    version = "*",
+  },
+  {
     'neovim/nvim-lspconfig',
     version = "*",
-
-    dependencies = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'saghen/blink.cmp',
-    },
 
     config = function()
       require('mason').setup()
@@ -34,6 +36,30 @@ return {
         capabilities = require('blink.cmp').get_lsp_capabilities(),
       })
 
+      require('lspconfig').ts_ls.setup({
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        root_dir = function(fname)
+          return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
+        end,
+      })
+
+      require('lspconfig').basedpyright.setup({
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "recommended",
+              diagnosticSeverityOverrides = {
+                reportAny = false,
+              },
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'openFilesOnly',
+            }
+          }
+        }
+      })
+
       require('mason-lspconfig').setup_handlers({
         function(server_name)
           local capabilities = require('blink.cmp').get_lsp_capabilities()
@@ -46,7 +72,7 @@ return {
               return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
             end,
           })
-        end
+        end,
       })
 
       vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format buffer' })
