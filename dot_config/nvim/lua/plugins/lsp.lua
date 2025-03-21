@@ -22,21 +22,23 @@ return {
     version = "*",
 
     config = function()
+      local lspconfig = require('lspconfig')
+
       require('mason').setup()
       require('mason-lspconfig').setup({
         ensure_installed = { "lua_ls", "bashls" },
         automatic_installation = false,
       })
 
-      require('lspconfig').ruby_lsp.setup({
+      lspconfig.ruby_lsp.setup({
         capabilities = require('blink.cmp').get_lsp_capabilities(),
       })
 
-      require('lspconfig').flow.setup({
+      lspconfig.flow.setup({
         capabilities = require('blink.cmp').get_lsp_capabilities(),
       })
 
-      require('lspconfig').ts_ls.setup({
+      lspconfig.ts_ls.setup({
         capabilities = require('blink.cmp').get_lsp_capabilities(),
         root_dir = function(fname)
           return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
@@ -60,20 +62,20 @@ return {
         }
       })
 
-      require('mason-lspconfig').setup_handlers({
-        function(server_name)
-          local capabilities = require('blink.cmp').get_lsp_capabilities()
-          require('lspconfig')[server_name].setup({ capabilities = capabilities })
-        end,
-        ["ts_ls"] = function()
-          require('lspconfig').ts_ls.setup({
-            capabilities = require('blink.cmp').get_lsp_capabilities(),
-            root_dir = function(fname)
-              return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
-            end,
-          })
-        end,
-      })
+      -- require('mason-lspconfig').setup_handlers({
+      --   function(server_name)
+      --     local capabilities = require('blink.cmp').get_lsp_capabilities()
+      --     require('lspconfig')[server_name].setup({ capabilities = capabilities })
+      --   end,
+      --   ["ts_ls"] = function()
+      --     require('lspconfig').ts_ls.setup({
+      --       capabilities = require('blink.cmp').get_lsp_capabilities(),
+      --       root_dir = function(fname)
+      --         return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
+      --       end,
+      --     })
+      --   end,
+      -- })
 
       vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format buffer' })
       vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { desc = 'Code References' })
