@@ -53,6 +53,9 @@ return {
               typeCheckingMode = "recommended",
               diagnosticSeverityOverrides = {
                 reportAny = false,
+                reportMissingTypeStubs = false,
+                reportUnknownImportSymbol = false,
+                reportUnknownVariableType = false,
               },
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,

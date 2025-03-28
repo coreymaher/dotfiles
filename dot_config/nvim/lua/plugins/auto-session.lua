@@ -3,7 +3,7 @@ return {
   lazy = false,
   config = function()
     require('auto-session').setup({
-      allowed_dirs = { '~/repos/*', '~/Desktop/Notes', '~/.config/nvim', },
+      allowed_dirs = { '~/repos/**', '~/Desktop/Notes', '~/.config/nvim', },
 
       post_restore_cmds = {
         function()
