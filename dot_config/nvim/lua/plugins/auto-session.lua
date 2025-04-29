@@ -1,6 +1,7 @@
 return {
   'rmagatti/auto-session',
   lazy = false,
+  enabled = false,
   config = function()
     require('auto-session').setup({
       allowed_dirs = { '~/repos/**', '~/Desktop/Notes', '~/.config/nvim', },
