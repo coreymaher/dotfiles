@@ -45,6 +45,10 @@ return {
         end,
       })
 
+      lspconfig.docker_compose_language_service.setup({
+        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      })
+
       require('lspconfig').basedpyright.setup({
         capabilities = require('blink.cmp').get_lsp_capabilities(),
         settings = {
@@ -56,6 +60,7 @@ return {
                 reportMissingTypeStubs = false,
                 reportUnknownImportSymbol = false,
                 reportUnknownVariableType = false,
+                reportImplicitOverride = false,
               },
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
@@ -86,6 +91,13 @@ return {
       vim.keymap.set('n', 'gI', require('telescope.builtin').lsp_implementations, { desc = 'Go to Implementation' })
       vim.keymap.set('n', '<leader>D', require('telescope.builtin').lsp_type_definitions, { desc = 'Go to Type Definition' })
       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = 'Go to Definition' })
+
+       vim.filetype.add({
+        filename = {
+          ["docker-compose.yml"] = "yaml.docker-compose",
+          ["docker-compose.yaml"] = "yaml.docker-compose",
+        },
+      })
     end,
   },
 }
