@@ -1,0 +1,8 @@
+brew "chezmoi"
+brew "fd"
+brew "neovim"
+brew "ripgrep"
+brew "starship"
+brew "tree"
+cask "font-jetbrains-mono-nerd-font"
+cask "ghostty"
