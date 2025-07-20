@@ -1,19 +1,8 @@
 return {
   {
-    'saghen/blink.compat',
-    version = '*',
-    lazy = true,
-    opts = {},
-  },
-
-  {
     'saghen/blink.cmp',
 
     version = '*',
-
-    dependencies = {
-      { "Exafunction/codeium.nvim", },
-    },
 
     opts = {
       keymap = { preset = 'default' },
@@ -32,20 +21,9 @@ return {
       },
 
       sources = {
-        -- default = { 'lsp', 'path', 'snippets', 'buffer', 'codeium' },
-        default = { 'lazydev', 'lsp', 'path', 'buffer', 'dadbod', 'codeium' },
+        default = { 'lazydev', 'lsp', 'path', 'buffer', 'dadbod' },
 
         providers = {
-          codeium = {
-            name = 'codeium',
-            module = 'blink.compat.source',
-            score_offset = -3,
-            override = {
-              get_keyword_pattern = function(self)
-                return [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]]
-              end
-            },
-          },
           dadbod = {
             name = "Dadbod",
             module = "vim_dadbod_completion.blink",

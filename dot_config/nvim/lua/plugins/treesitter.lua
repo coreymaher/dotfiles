@@ -18,6 +18,7 @@ return {
         'markdown',
         'ruby',
         'sql',
+        'starlark',
         'typescript',
         'yaml',
       },
