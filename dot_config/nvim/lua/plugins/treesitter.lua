@@ -16,6 +16,7 @@ return {
         'lua',
         'make',
         'markdown',
+        'python',
         'ruby',
         'sql',
         'starlark',
