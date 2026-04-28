@@ -12,4 +12,4 @@ brew "uv"
 
 cask "font-jetbrains-mono-nerd-font"
 cask "ghostty"
-cask "claude-code"
+cask "claude-code@latest"
