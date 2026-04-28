@@ -22,39 +22,21 @@ return {
     version = "*",
 
     config = function()
-      local lspconfig = require('lspconfig')
-
       require('mason').setup()
       require('mason-lspconfig').setup({
         ensure_installed = { "lua_ls", "bashls" },
         automatic_enable = false,
       })
 
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config('*', {
         capabilities = require('blink.cmp').get_lsp_capabilities(),
       })
 
-      lspconfig.flow.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      vim.lsp.config('ts_ls', {
+        root_markers = { 'tsconfig.json' },
       })
 
-      lspconfig.ts_ls.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
-        root_dir = function(fname)
-          return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
-        end,
-      })
-
-      lspconfig.eslint.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
-      })
-
-      lspconfig.docker_compose_language_service.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
-      })
-
-      require('lspconfig').basedpyright.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      vim.lsp.config('basedpyright', {
         settings = {
           basedpyright = {
             analysis = {
@@ -77,24 +59,15 @@ return {
         }
       })
 
-      lspconfig.tilt_ls.setup({
-        capabilities = require('blink.cmp').get_lsp_capabilities(),
+      vim.lsp.enable({
+        'ruby_lsp',
+        'flow',
+        'ts_ls',
+        'eslint',
+        'docker_compose_language_service',
+        'basedpyright',
+        'tilt_ls',
       })
-
-      -- require('mason-lspconfig').setup_handlers({
-      --   function(server_name)
-      --     local capabilities = require('blink.cmp').get_lsp_capabilities()
-      --     require('lspconfig')[server_name].setup({ capabilities = capabilities })
-      --   end,
-      --   ["ts_ls"] = function()
-      --     require('lspconfig').ts_ls.setup({
-      --       capabilities = require('blink.cmp').get_lsp_capabilities(),
-      --       root_dir = function(fname)
-      --         return require('lspconfig/util').root_pattern('tsconfig.json')(fname)
-      --       end,
-      --     })
-      --   end,
-      -- })
 
       vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { desc = 'Format buffer' })
       vim.keymap.set('n', 'grr', require('telescope.builtin').lsp_references, { desc = 'Code References' })
