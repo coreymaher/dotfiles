@@ -24,3 +24,5 @@ vim.g.markdown_recommended_style = 0
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 vim.opt.laststatus = 3
+
+vim.g.loaded_python3_provider = 0

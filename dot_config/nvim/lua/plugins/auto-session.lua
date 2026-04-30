@@ -39,12 +39,21 @@ return {
         return false
       end,
 
-      -- Set terminal title in Ghostty after restoring session
       post_restore_cmds = {
+        -- Set terminal title in Ghostty after restoring session
         function()
           if vim.fn.getenv("TERM_PROGRAM") == "ghostty" then
             vim.opt.title = true
             vim.opt.titlestring = "nvim (" .. require('auto-session.lib').current_session_name(true) .. ")"
+          end
+        end,
+
+        -- Re-fire FileType so LSP autocmds attach to restored buffers
+        function()
+          for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].filetype ~= "" then
+              vim.api.nvim_exec_autocmds("FileType", { buffer = bufnr })
+            end
           end
         end,
       },

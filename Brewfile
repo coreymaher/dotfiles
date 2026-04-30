@@ -8,6 +8,7 @@ brew "neovim"
 brew "ripgrep"
 brew "starship"
 brew "tree"
+brew "tree-sitter-cli"
 brew "uv"
 
 cask "font-jetbrains-mono-nerd-font"
