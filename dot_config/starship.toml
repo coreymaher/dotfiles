@@ -1,5 +1,5 @@
 format = '''
-$time $username $directory $git_branch$git_status $cmd_duration
+$time$username $directory $git_branch$git_status $cmd_duration
 $character
 '''
 
@@ -11,8 +11,7 @@ format = '[$time]($style)'
 style = 'cyan'
 
 [username]
-show_always = true
-format = '[$user]($style)'
+format = ' [$user]($style)'
 style_user = 'bright-yellow'
 
 [directory]
