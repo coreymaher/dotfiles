@@ -1,6 +1,6 @@
 -- Set up functions for interperters needed by mason to setup LSP servers
 
-local suggested_node_version = "22"
+local suggested_node_version = "24"
 local suggested_python_version = "3.13"
 
 local function setup_node(suggested_version)
