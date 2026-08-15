@@ -1,13 +1,8 @@
 {{ if .work -}}
-tap "derailed/k9s", trusted: true
-tap "anomalyco/tap", trusted: true
 tap "pulumi/tap", trusted: true
 
 {{ end -}}
 brew "chezmoi"
-{{ if .work -}}
-brew "derailed/k9s/k9s", trusted: true
-{{ end -}}
 brew "fd"
 brew "herdr"
 brew "libpq"
