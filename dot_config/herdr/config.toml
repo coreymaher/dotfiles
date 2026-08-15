@@ -1,0 +1,19 @@
+[theme]
+name = "rose-pine"
+
+[ui]
+agent_panel_sort = "spaces"
+
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui.sidebar.agents]
+row_gap = 0
+rows = [["workspace", "tab"], ["state_icon", "state_text", "agent"]]
+
+[ui.sidebar.spaces]
+row_gap = 0
+rows = [["state_icon", "state_text", "workspace"], ["branch", "git_status"]]
